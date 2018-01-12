@@ -31,10 +31,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       v.cpus = 2
     end
 
-    master_config.vm.host_name = 'master.local'
-    master_config.vm.network "private_network", ip: "192.168.89.10"
+    master_config.vm.host_name = 'saltmaster.local'
+    master_config.vm.network "private_network", ip: "192.168.48.10"
     master_config.vm.synced_folder "salt/", "/srv/salt"
     master_config.vm.synced_folder "pillar/", "/srv/pillar"
+    # master_config.ssh.username = "vagrant"
+    # master_config.ssh.password = "vagrant"
     master_config.vm.provision :salt do |salt|
       salt.master_config = "vagrant/etc/master"
       salt.master_key = "vagrant/keys/master_minion.pem"
@@ -60,14 +62,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define :minion1 do |minion_config|
     minion_config.vm.box = "bento/ubuntu-16.04"
     if Vagrant.has_plugin?("vagrant-cachier")
-        config.cache.scope = :box
-	        config.cache.synced_folder_opts = {
-	         type: :nfs,
-              # The nolock option can be useful for an NFSv3 client that wants to avoid the
-              # NLM sideband protocol. Without this option, apt-get might hang if it tries
-              # to lock files needed for /var/cache/* operations. All of this can be avoided
-              # by using NFSv4 everywhere. Please note that the tcp option is not the default.
-              mount_options: ['rw', 'vers=3', 'tcp', 'nolock']
+    	config.cache.scope = :box
+	    config.cache.synced_folder_opts = {
+	      type: :nfs,
+	      # The nolock option can be useful for an NFSv3 client that wants to avoid the
+	      # NLM sideband protocol. Without this option, apt-get might hang if it tries
+	      # to lock files needed for /var/cache/* operations. All of this can be avoided
+	      # by using NFSv4 everywhere. Please note that the tcp option is not the default.
+	      mount_options: ['rw', 'vers=3', 'tcp', 'nolock']
     	}
     end
     if File.exists?(File.expand_path("~") + "/.ssh/vagrant_rsa")
@@ -79,8 +81,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       v.cpus = 2
     end
 
-    minion_config.vm.host_name = 'minion1.local'
-    minion_config.vm.network "private_network", ip: "192.168.89.11"
+    minion_config.vm.host_name = 'saltminion1.local'
+    minion_config.vm.network "private_network", ip: "192.168.48.11"
     # minion_config.ssh.username = "vagrant"
     # minion_config.ssh.password = "vagrant"
 
@@ -96,8 +98,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   config.vm.define :minion2 do |minion_config|
-  #  minion_config.vm.box = "bento/centos-7.4"
-    minion_config.vm.box = "bento/ubuntu-16.04"
+#    minion_config.vm.box = "bento/centos-7.3"
+     minion_config.vm.box = "bento/ubuntu-16.04"
     if Vagrant.has_plugin?("vagrant-cachier")
       	config.cache.scope = :box
 	    config.cache.synced_folder_opts = {
@@ -121,9 +123,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # The following line can be uncommented to use Centos
     # instead of Ubuntu.
     # Comment out the above line as well
-    minion_config.vm.host_name = 'minion2.local'
-    minion_config.vm.network "private_network", ip: "192.168.89.12"
-
+    #minion_config.vm.box = "chef/centos-6.5"
+    minion_config.vm.host_name = 'saltminion2.local'
+    minion_config.vm.network "private_network", ip: "192.168.48.12"
+    # minion_config.ssh.username = "vagrant"
+    # minion_config.ssh.password = "vagrant"
 
     minion_config.vm.provision :salt do |salt|
       salt.minion_config = "vagrant/etc/minion2"
