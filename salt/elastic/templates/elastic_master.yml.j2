@@ -1,0 +1,25 @@
+---
+## Denna er generert av salt!!!! Ikkje endra!!!! Daa vaert da braak veit eg!!!
+## Denne er for elastic search master
+
+
+
+cluster.name: "kosekroken"
+network.host: 0.0.0.0
+
+discovery.zen.minimum_master_nodes: 1
+node:
+  name: {{ name }}
+  data: false
+  master: true
+  ingest: false
+
+
+discovery.zen.ping.unicast.hosts: {{ servers }}
+
+
+## Disable X-Pack
+xpack.security.enabled: false
+xpack.monitoring.enabled: false
+xpack.ml.enabled: false
+xpack.watcher.enabled: false
