@@ -41,7 +41,7 @@ Vi skal nå legge ut git støtte for salt-masteren
     sudo su
     salt master test.ping
 
-    # Åpne salt/master/init.sls og se på denne før du kjører
+    # Åpne **salt/master/init.sls** og se på denne før du kjører
     salt master state.apply master test=True
 
     # Config endringer krever reload/restart av salt-master
