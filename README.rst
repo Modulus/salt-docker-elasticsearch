@@ -108,7 +108,18 @@ Oppgave 4 - Kjøre highstate
 
     # number_of_nodes skal være 3 her, dersom alt er ok
 
-Oppgave 5 - Sjekke kibana
+
+Oppgave 5 - Importere data til elasticsearch
+---------------------------------------------
+
+Dette gjøres via en state
+
+.. code:: bash
+
+    salt master state.apply elastic.data
+
+
+Oppgave 6 - Sjekke kibana
 ---------------------------
 
 Dette kan gjøres på master noden
