@@ -4,6 +4,7 @@ Saltstack workshop del 2
 Dere skal nå benytte salt-formulas, pillar, states og salt-mine til å sette opp et elasticsearch cluster. Så skal det importeres data til dette clusteret.
 
 Vi dekker altså
+
     1. salt-formulas
     2. pillar
     3. states
@@ -24,7 +25,7 @@ Finnes her: https://github.com/saltstack-formulas/docker-formula
 
 Før vi kjører
 -------------
-..code: bash
+.. code:: bash
 
     vagrant up
     vagrant ssh master
