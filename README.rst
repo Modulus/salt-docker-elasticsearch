@@ -38,6 +38,7 @@ Vi skal nå legge ut git støtte for salt-masteren
 
 
 .. code:: bash
+
     sudo su
     salt master test.ping
 
