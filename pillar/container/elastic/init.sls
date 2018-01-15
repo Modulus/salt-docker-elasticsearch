@@ -1,3 +1,3 @@
 docker:
   containers:
-    - docker.elastic.co/elasticsearch/elasticsearch:6.1.1
+    - docker.elastic.co/elasticsearch/elasticsearch-oss:6.1.1

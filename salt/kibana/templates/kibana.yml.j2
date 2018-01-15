@@ -1,11 +1,15 @@
 server.name: kibana
 server.host: "0"
-elasticsearch.url: http://localhost:9200
+elasticsearch.url: http://{{ip}}:9200
 
 ## Disable X-Pack
-xpack.security.enabled: false
-xpack.monitoring.enabled: false
-xpack.ml.enabled: false
-xpack.graph.enabled: false
-xpack.reporting.enabled: false
-xpack.grokdebugger.enabled: false
+#xpack.security.enabled: false#}
+#xpack.monitoring.enabled: false#}
+#xpack.ml.enabled: false#}
+#xpack.graph.enabled: false#}
+#xpack.reporting.enabled: false#}
+#xpack.grokdebugger.enabled: false#}
+# elasticsearch.username: kibana
+# elasticsearch.password: hemmelig
+
+

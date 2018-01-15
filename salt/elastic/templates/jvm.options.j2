@@ -21,11 +21,13 @@
 
 # Xms represents the initial size of total heap space
 # Xmx represents the maximum size of total heap space
--Xms512m
--Xmx512mm
+-Xms1024m
+-Xmx1024m
+#-Xms{{memory}}m
+#-Xmx{{memory}}m
 
 
--Djava.io.tmpdir={{elasticsearch_temp_dir}}
+-Djava.io.tmpdir=/tmp
 ################################################################
 ## Expert settings
 ################################################################

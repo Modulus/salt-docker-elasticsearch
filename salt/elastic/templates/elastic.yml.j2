@@ -4,22 +4,37 @@
 
 
 cluster.name: "kosekroken"
-network.host: 0.0.0.0
+#network.host: 0.0.0.0
+
+http:
+    cors:
+        enabled: true
+        allow-origin: "/.*/"
+
 node:
   name: {{ name }}
   data: true
   master: false
   ingest: false
 
-discovery.zen.minimum_master_nodes: 1
 
+network:
+  bind_host: _site_
+  publish_host: {{ip}}
 
-
-discovery.zen.ping.unicast.hosts: {{ servers }}
-
+discovery:
+  zen:
+    minimum_master_nodes: 1
+    ping:
+      unicast:
+        hosts: {{ servers }}
+    ping_timeout: 3s
+    fd:
+      ping_timeout: 3s
+      ping_retries: 10
 
 ## Disable X-Pack
-xpack.security.enabled: false
-xpack.monitoring.enabled: false
-xpack.ml.enabled: false
-xpack.watcher.enabled: false
+#xpack.security.enabled: false
+#xpack.monitoring.enabled: false
+#xpack.ml.enabled: false
+#xpack.watcher.enabled: false
